@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace inheritance
 {
-    sealed class JaggedArray : BaseArray
+    sealed class JaggedArray : ArrayBase
     {
-        private int[][] array;
+        private OneDimensionalArray[] array;
         public JaggedArray(int n, bool userInput = false) : base(n, userInput)
         {
+            array = new OneDimensionalArray[n];
+
             if (userInput)
             {
                 UserInput();
@@ -37,8 +39,6 @@ namespace inheritance
 
         public override void UserInput()
         {
-            array = new int[n][];
-
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("Input length of nested array");
@@ -47,21 +47,17 @@ namespace inheritance
 
                 OneDimensionalArray nestedArray = new(m, true);
 
-                array[i] = nestedArray.Array;
+                array[i] = nestedArray;
             }
         }
 
         public override void RandomInput()
         {
-            array = new int[n][];
-
-            Random rnd = new();
-
             for (int i = 0; i < n; i++)
             {
                 OneDimensionalArray nestedArray = new(rnd.Next(1, 10));
 
-                array[i] = nestedArray.Array;
+                array[i] = nestedArray;
             }
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace inheritance
 {
-    sealed class TwoDimensionalArray : BaseArray
+    sealed class TwoDimensionalArray : ArrayBase
     {
         private int m;
 
@@ -23,6 +23,8 @@ namespace inheritance
         public TwoDimensionalArray(int n, int m, bool userInput = false) : base(n, userInput)
         {
             this.m = m;
+
+            array = new int[n, m];
 
             if (userInput)
             {
@@ -73,15 +75,11 @@ namespace inheritance
 
         public override void RandomInput()
         {
-            array = new int[n, m];
-
-            Random rnd = new();
-
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    int value = rnd.Next(-1000, 1000);
+                    int value = rnd.Next(0, 1000);
                     array[i, j] = value;
                 }
             }

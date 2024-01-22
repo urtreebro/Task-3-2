@@ -10,7 +10,7 @@ namespace inheritance
     {
         static void Main(string[] args)
         {
-            BaseArray[] allArrays = new BaseArray[3];
+            ArrayBase[] allArrays = new ArrayBase[3];
 
             Random rnd = new();
 
@@ -23,7 +23,7 @@ namespace inheritance
             JaggedArray jaggedarray = new(rnd.Next(2, 10));
             allArrays[2] = jaggedarray;
 
-            foreach (BaseArray array in allArrays)
+            foreach (ArrayBase array in allArrays)
             {
                 Console.WriteLine($"Average: {array.FindAverage()}");
 

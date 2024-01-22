@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace inheritance
 {
-    sealed class OneDimensionalArray : BaseArray
+    sealed class OneDimensionalArray : ArrayBase
     {
         int[] array;
         public int[] Array
@@ -14,13 +14,21 @@ namespace inheritance
             get { return array; }
         }
 
+        public int Length
+        {
+            get { return n; }
+        }
+
         public int this[int index]
         {
             get { return array[index]; }
+            set { array[index] = value; }
         }
 
         public OneDimensionalArray(int n, bool userInput = false) : base(n, userInput)
         {
+            array = new int[n];
+
             if (userInput)
             {
                 Console.WriteLine($"Input {n} numbers");
@@ -34,10 +42,6 @@ namespace inheritance
 
         public override void RandomInput()
         {
-            array = new int[n];
-
-            Random rnd = new();
-
             for (int i = 0; i < array.Length; i++)
             {
                 int value = rnd.Next(0, 1000);
@@ -47,8 +51,6 @@ namespace inheritance
 
         public override void UserInput()
         {
-            array = new int[n];
-
             for (int i = 0; i < n; i++)
             {
                 if (int.TryParse(Console.ReadLine(), out int num))

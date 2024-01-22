@@ -21,13 +21,13 @@ namespace inheritance
             this.userInput = userInput;
         }
 
-        abstract public void RandomInput();
+        public abstract void RandomInput();
 
-        abstract public void UserInput();
+        public abstract void UserInput();
 
-        abstract public void PrintArray();
+        public abstract void PrintArray();
 
-        abstract public double FindAverage();
+        public abstract double FindAverage();
     }
 
 }

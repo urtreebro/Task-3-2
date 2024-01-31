@@ -36,10 +36,6 @@ namespace inheritance
 
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("Input length of nested array");
-
-                int m = int.Parse(Console.ReadLine());
-
                 OneDimensionalArray nestedArray = new(true);
 
                 array[i] = nestedArray;

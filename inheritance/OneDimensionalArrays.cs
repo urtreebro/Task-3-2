@@ -8,11 +8,9 @@ namespace inheritance
 {
     sealed class OneDimensionalArray : ArrayBase
     {
+        private int n;
+
         int[] array;
-        public int[] Array
-        {
-            get { return array; }
-        }
 
         public int Length
         {
@@ -25,23 +23,17 @@ namespace inheritance
             set { array[index] = value; }
         }
 
-        public OneDimensionalArray(int n, bool userInput = false) : base(n, userInput)
+        public OneDimensionalArray(bool userInput = false) : base(userInput)
         {
-            array = new int[n];
 
-            if (userInput)
-            {
-                Console.WriteLine($"Input {n} numbers");
-                UserInput();
-            }
-            else
-            {
-                RandomInput();
-            }
         }
 
-        public override void RandomInput()
+        protected override void RandomInput()
         {
+            n = rnd.Next(1, 10);
+
+            array = new int[n];
+
             for (int i = 0; i < array.Length; i++)
             {
                 int value = rnd.Next(0, 1000);
@@ -49,8 +41,16 @@ namespace inheritance
             }
         }
 
-        public override void UserInput()
+        protected override void UserInput()
         {
+            Console.WriteLine("Input length of the array");
+
+            n = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Input {n} numbers");
+
+            array = new int[n]; 
+
             for (int i = 0; i < n; i++)
             {
                 if (int.TryParse(Console.ReadLine(), out int num))
@@ -69,7 +69,6 @@ namespace inheritance
 
             if (userInput)
             {
-                Console.WriteLine($"Input {n} numbers");
                 UserInput();
             }
             else

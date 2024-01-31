@@ -9,18 +9,12 @@ namespace inheritance
     sealed class JaggedArray : ArrayBase
     {
         private OneDimensionalArray[] array;
-        public JaggedArray(int n, bool userInput = false) : base(n, userInput)
-        {
-            array = new OneDimensionalArray[n];
 
-            if (userInput)
-            {
-                UserInput();
-            }
-            else
-            {
-                RandomInput();
-            }
+        private int n;
+
+        public JaggedArray(bool userInput = false) : base(userInput)
+        {
+
         }
 
         public void Fill(int n, bool userInput = false)
@@ -37,25 +31,35 @@ namespace inheritance
             }
         }
 
-        public override void UserInput()
+        protected override void UserInput()
         {
+            Console.WriteLine("Input length of the array");
+
+            n = int.Parse(Console.ReadLine());
+
+            array = new OneDimensionalArray[n];
+
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("Input length of nested array");
 
                 int m = int.Parse(Console.ReadLine());
 
-                OneDimensionalArray nestedArray = new(m, true);
+                OneDimensionalArray nestedArray = new(true);
 
                 array[i] = nestedArray;
             }
         }
 
-        public override void RandomInput()
+        protected override void RandomInput()
         {
+            n = rnd.Next(1, 10);
+
+            array = new OneDimensionalArray[n];
+             
             for (int i = 0; i < n; i++)
             {
-                OneDimensionalArray nestedArray = new(rnd.Next(1, 10));
+                OneDimensionalArray nestedArray = new();
 
                 array[i] = nestedArray;
             }
@@ -64,6 +68,7 @@ namespace inheritance
         public override void PrintArray()
         {
             Console.WriteLine("Printed array:");
+
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = 0; j < array[i].Length; j++)

@@ -8,22 +8,27 @@ namespace inheritance
 {
     abstract class ArrayBase
     {
-        protected int n;
-
         protected bool userInput = false;
 
         protected static Random rnd = new();
 
-        protected ArrayBase(int n, bool userInput = false)
+        protected ArrayBase(bool userInput = false)
         {
-            this.n = n;
-
             this.userInput = userInput;
+
+            if (userInput)
+            {
+                UserInput();
+            }
+            else
+            {
+                RandomInput();
+            }
         }
 
-        public abstract void RandomInput();
+        protected abstract void RandomInput();
 
-        public abstract void UserInput();
+        protected abstract void UserInput();
 
         public abstract void PrintArray();
 

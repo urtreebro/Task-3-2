@@ -8,6 +8,8 @@ namespace inheritance
 {
     sealed class TwoDimensionalArray : ArrayBase
     {
+        private int n;
+
         private int m;
 
         private int[,] array;
@@ -20,21 +22,10 @@ namespace inheritance
         {
             get { return m; }
         }
-        public TwoDimensionalArray(int n, int m, bool userInput = false) : base(n, userInput)
+
+        public TwoDimensionalArray(bool userInput = false) : base(userInput)
         {
-            this.m = m;
 
-            array = new int[n, m];
-
-            if (userInput)
-            {
-                Console.WriteLine($"Input {n * m} numbers");
-                UserInput();
-            }
-            else
-            {
-                RandomInput();
-            }
         }
 
         public void Fill(int n, int m, bool userInput = false)
@@ -45,7 +36,6 @@ namespace inheritance
 
             if (userInput)
             {
-                Console.WriteLine($"Input {n * m} numbers");
                 UserInput();
             }
             else
@@ -53,8 +43,17 @@ namespace inheritance
                 RandomInput();
             }
         }
-        public override void UserInput()
+
+        protected override void UserInput()
         {
+            Console.WriteLine("Input length of the array");
+
+            n = int.Parse(Console.ReadLine());
+
+            m = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Input {n * m} numbers"); 
+
             array = new int[n, m];
 
             for (int i = 0; i < n; i++)
@@ -73,8 +72,14 @@ namespace inheritance
             }
         }
 
-        public override void RandomInput()
+        protected override void RandomInput()
         {
+            n = rnd.Next(1, 10);
+
+            m = rnd.Next(1, 10);
+
+            array = new int[n, m];
+
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)

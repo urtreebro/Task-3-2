@@ -14,13 +14,13 @@ namespace inheritance
 
             Random rnd = new();
 
-            OneDimensionalArray onedimarray = new(rnd.Next(2, 10));
+            OneDimensionalArray onedimarray = new();
             allArrays[0] = onedimarray;
 
-            TwoDimensionalArray twodimarray = new(rnd.Next(2, 10), rnd.Next(2, 10));
+            TwoDimensionalArray twodimarray = new();
             allArrays[1] = twodimarray;
 
-            JaggedArray jaggedarray = new(rnd.Next(2, 10));
+            JaggedArray jaggedarray = new();
             allArrays[2] = jaggedarray;
 
             foreach (ArrayBase array in allArrays)

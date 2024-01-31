@@ -25,7 +25,15 @@ namespace inheritance
 
             foreach (ArrayBase array in allArrays)
             {
-                Console.WriteLine($"Average: {array.FindAverage()}");
+                Console.WriteLine($"Average: {array.FindAverage()} \n");
+
+                array.PrintArray();
+
+                Console.WriteLine();
+
+                array.Refill();
+
+                Console.WriteLine("Refilled array\n");
 
                 array.PrintArray();
 

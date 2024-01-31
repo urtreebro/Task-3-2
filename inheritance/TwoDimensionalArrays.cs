@@ -14,26 +14,10 @@ namespace inheritance
 
         private int[,] array;
 
-        public int Rows
+        public TwoDimensionalArray(bool userInput = false) : base(userInput) { }
+
+        public override void Refill(bool userInput = false)
         {
-            get { return n; }
-        }
-        public int Columns
-        {
-            get { return m; }
-        }
-
-        public TwoDimensionalArray(bool userInput = false) : base(userInput)
-        {
-
-        }
-
-        public void Fill(int n, int m, bool userInput = false)
-        {
-            this.n = n;
-
-            this.m = m;
-
             if (userInput)
             {
                 UserInput();

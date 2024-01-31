@@ -12,15 +12,10 @@ namespace inheritance
 
         private int n;
 
-        public JaggedArray(bool userInput = false) : base(userInput)
+        public JaggedArray(bool userInput = false) : base(userInput) { }
+
+        public override void Refill(bool userInput = false)
         {
-
-        }
-
-        public void Fill(int n, bool userInput = false)
-        {
-            this.n = n;
-
             if (userInput)
             {
                 UserInput();
@@ -104,14 +99,12 @@ namespace inheritance
             for (int i = 0; i < n; i++)
             {
                 double sum = 0;
-                int count = 0;
 
                 for (int j = 0; j < array[i].Length; j++)
                 {
                     sum += array[i][j];
-                    count++;
                 }
-                double average = sum / count;
+                double average = sum / array[i].Length;
                 averageArray[i] = average;
             }
             return averageArray;

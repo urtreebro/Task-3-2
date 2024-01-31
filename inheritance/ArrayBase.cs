@@ -33,6 +33,7 @@ namespace inheritance
         public abstract void PrintArray();
 
         public abstract double FindAverage();
-    }
 
+        public abstract void Refill(bool userInput = false);
+    }
 }

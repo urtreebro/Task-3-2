@@ -23,10 +23,7 @@ namespace inheritance
             set { array[index] = value; }
         }
 
-        public OneDimensionalArray(bool userInput = false) : base(userInput)
-        {
-
-        }
+        public OneDimensionalArray(bool userInput = false) : base(userInput) { }
 
         protected override void RandomInput()
         {
@@ -63,10 +60,8 @@ namespace inheritance
                 }
             }
         }
-        public void Fill(int n, bool userInput = false)
+        public override void Refill(bool userInput = false)
         {
-            this.n = n;
-
             if (userInput)
             {
                 UserInput();
@@ -91,7 +86,9 @@ namespace inheritance
             {
                 sum += num;
             }
+
             double average = sum / n;
+
             return average;
         }
 
